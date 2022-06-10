@@ -1,54 +1,49 @@
 package models;
 
 import java.util.Date;
-import java.util.List;
 
-public class Post {
+public class Post extends Entity{
 
-    private int id = -1;
     private String title = "";
     private String content = "";
     private Date creationDate = null;
-    private Date LastEditDate = null;
-    private List<Comment> comments = null;
-
+    private Date lastEditDate = null;
     private int userId = -1;
 
-    public Post(int id, String title, String content, Date creationDate, Date lastEditDate, List<Comment> comments, int userId) {
-        this.id = id;
+    public Post(int id, String title, String content, Date creationDate, Date lastEditDate, int userId) {
+        super(id);
+
         this.title = title;
         this.content = content;
         this.creationDate = creationDate;
-        LastEditDate = lastEditDate;
-        this.comments = comments;
+        this.lastEditDate = lastEditDate;
         this.userId = userId;
     }
 
-    public Post(String title, String content, Date creationDate, Date lastEditDate, List<Comment> comments, int userId) {
-        this.id = id;
+    public Post(String title, String content, Date creationDate, Date lastEditDate, int userId) {
+        super(-1);
+
         this.title = title;
         this.content = content;
         this.creationDate = creationDate;
-        LastEditDate = lastEditDate;
-        this.comments = comments;
+        this.lastEditDate = lastEditDate;
         this.userId = userId;
     }
 
     @Override
     public String toString() {
         return "Post{" +
-                "id=" + id +
+                super.toString() +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", creationDate=" + creationDate +
-                ", LastEditDate=" + LastEditDate +
-                ", comments=" + comments +
+                ", LastEditDate=" + lastEditDate +
                 ", userId=" + userId +
                 '}';
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.setId(id);
     }
 
     public void setTitle(String title) {
@@ -64,20 +59,14 @@ public class Post {
     }
 
     public void setLastEditDate(Date lastEditDate) {
-        LastEditDate = lastEditDate;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
+        this.lastEditDate = lastEditDate;
     }
 
     public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return this.getId(); }
 
     public String getTitle() {
         return title;
@@ -91,13 +80,7 @@ public class Post {
         return creationDate;
     }
 
-    public Date getLastEditDate() {
-        return LastEditDate;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
+    public Date getLastEditDate() { return lastEditDate; }
 
     public int getUserId() {
         return userId;

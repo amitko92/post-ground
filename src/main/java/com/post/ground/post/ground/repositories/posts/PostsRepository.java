@@ -8,5 +8,10 @@ import java.util.Optional;
 
 public interface PostsRepository {
 
+    /**
+     * get all post of given User, search by UserId.
+     * @param user
+     * @return list of all user's posts.
+     */
     public Optional<List<Post>> getAllPost(User user);
 }
